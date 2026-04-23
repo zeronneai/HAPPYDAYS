@@ -5,6 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy Days Wellness Co. — Good Vibes Only</title>
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<!-- Cloudinary CDN preconnect -->
+<link rel="preconnect" href="https://res.cloudinary.com" crossorigin>
+<link rel="dns-prefetch" href="https://res.cloudinary.com">
+<!-- Preload above-fold images -->
+<link rel="preload" as="image" href="https://res.cloudinary.com/dsprn0ew4/image/upload/f_auto,q_auto,w_1920/v1776980123/ELIMINA_EL_TEXTO_202604231451_rhcpgc.jpg">
+<link rel="preload" as="image" href="https://res.cloudinary.com/dsprn0ew4/image/upload/f_auto,q_auto,w_1400/v1776983162/Happy_eqhp1j.png">
 <style>
   :root {
     --dark-green: #5C7F3A;
@@ -48,7 +54,7 @@
   body::before {
     content: '';
     position: fixed; inset: 0;
-    background-image: url('https://res.cloudinary.com/dsprn0ew4/image/upload/v1776922197/CREA_UN_BACKGROUND_202604222329_zbhcxp.jpg');
+    background-image: url('https://res.cloudinary.com/dsprn0ew4/image/upload/f_auto,q_auto,w_1920/v1776922197/CREA_UN_BACKGROUND_202604222329_zbhcxp.jpg');
     background-size: cover;
     background-position: center;
     opacity: 0.04;
@@ -108,7 +114,7 @@
     text-align: center;
     background-image:
       linear-gradient(to bottom, rgba(243,232,210,0.10) 0%, rgba(243,232,210,0.25) 55%, rgba(45,27,61,0.45) 100%),
-      url('https://res.cloudinary.com/dsprn0ew4/image/upload/v1776980123/ELIMINA_EL_TEXTO_202604231451_rhcpgc.jpg');
+      url('https://res.cloudinary.com/dsprn0ew4/image/upload/f_auto,q_auto,w_1920/v1776980123/ELIMINA_EL_TEXTO_202604231451_rhcpgc.jpg');
     background-size: cover;
     background-position: center;
   }
@@ -235,7 +241,7 @@
     background-color: var(--navy);
     background-image:
       linear-gradient(rgba(45,27,61,0.92), rgba(45,27,61,0.92)),
-      url('https://res.cloudinary.com/dsprn0ew4/image/upload/v1776922197/CREA_UN_BACKGROUND_202604222329_zbhcxp.jpg');
+      url('https://res.cloudinary.com/dsprn0ew4/image/upload/f_auto,q_auto,w_1920/v1776922197/CREA_UN_BACKGROUND_202604222329_zbhcxp.jpg');
     background-size: cover;
     background-position: center 30%;
     border-top: 4px solid var(--yellow);
@@ -442,7 +448,7 @@
     background-color: var(--navy);
     background-image:
       linear-gradient(rgba(45,27,61,0.87), rgba(45,27,61,0.87)),
-      url('https://res.cloudinary.com/dsprn0ew4/image/upload/v1776922197/CREA_UN_BACKGROUND_202604222329_zbhcxp.jpg');
+      url('https://res.cloudinary.com/dsprn0ew4/image/upload/f_auto,q_auto,w_1920/v1776922197/CREA_UN_BACKGROUND_202604222329_zbhcxp.jpg');
     background-size: cover;
     background-position: center bottom;
     background-attachment: scroll, fixed;
@@ -534,7 +540,7 @@
     background-color: var(--yellow);
     background-image:
       linear-gradient(rgba(242,201,76,0.90), rgba(242,201,76,0.90)),
-      url('https://res.cloudinary.com/dsprn0ew4/image/upload/v1776922197/CREA_UN_BACKGROUND_202604222329_zbhcxp.jpg');
+      url('https://res.cloudinary.com/dsprn0ew4/image/upload/f_auto,q_auto,w_1920/v1776922197/CREA_UN_BACKGROUND_202604222329_zbhcxp.jpg');
     background-size: cover;
     background-position: center 45%;
     border-top: 4px solid var(--navy);
@@ -848,7 +854,7 @@
 <!-- NAV -->
 <nav>
   <div class="nav-logo">
-    <img src="https://res.cloudinary.com/dsprn0ew4/image/upload/v1776922296/ChatGPT_Image_Apr_22_2026_11_31_30_PM_vk1zdb.png" alt="Happy Days Wellness Co." class="nav-logo-img">
+    <img src="https://res.cloudinary.com/dsprn0ew4/image/upload/f_auto,q_auto,w_200/v1776922296/ChatGPT_Image_Apr_22_2026_11_31_30_PM_vk1zdb.png" alt="Happy Days Wellness Co." class="nav-logo-img">
   </div>
   <ul class="nav-links">
     <li><a href="#products">Shop</a></li>
@@ -867,9 +873,11 @@
 
   <div class="hero-badge">Good Vibes Only · Est. 2026</div>
   <img
-    src="https://res.cloudinary.com/dsprn0ew4/image/upload/v1776983162/Happy_eqhp1j.png"
+    src="https://res.cloudinary.com/dsprn0ew4/image/upload/f_auto,q_auto,w_1400/v1776983162/Happy_eqhp1j.png"
     alt="Happy Days Wellness Co."
     class="hero-logo"
+    fetchpriority="high"
+    decoding="async"
   >
   <p class="hero-sub">Wellness Co. — Feel the Groove. Live the Vibe.</p>
   <div class="hero-cta">
@@ -912,7 +920,7 @@
     <div class="product-card reveal-left" style="transition-delay: 0.05s;">
       <div class="card-img hydration">
         <div class="card-badge">⭐ Best Seller</div>
-        <img src="https://res.cloudinary.com/dsprn0ew4/image/upload/v1776981526/UTILIZANDO_ESTAS_VARIANTES_202604231558_jf2jbi.jpg" alt="Happy Day Hydration" class="card-product-img">
+        <img src="https://res.cloudinary.com/dsprn0ew4/image/upload/f_auto,q_auto,w_800/v1776981526/UTILIZANDO_ESTAS_VARIANTES_202604231558_jf2jbi.jpg" alt="Happy Day Hydration" class="card-product-img" loading="lazy" decoding="async">
       </div>
       <div class="card-body">
         <div class="card-tag">✿ Hydration</div>
@@ -929,7 +937,7 @@
     <div class="product-card reveal" style="transition-delay: 0.12s;">
       <div class="card-img coffee">
         <div class="card-badge">☕ New</div>
-        <img src="https://res.cloudinary.com/dsprn0ew4/image/upload/v1776980383/GENERA_ESTA_IMAGEN_202604231538_y8u8m1.jpg" alt="Infused K-Cup Coffee Pod" class="card-product-img">
+        <img src="https://res.cloudinary.com/dsprn0ew4/image/upload/f_auto,q_auto,w_800/v1776980383/GENERA_ESTA_IMAGEN_202604231538_y8u8m1.jpg" alt="Infused K-Cup Coffee Pod" class="card-product-img" loading="lazy" decoding="async">
       </div>
       <div class="card-body">
         <div class="card-tag">☕ Coffee</div>
@@ -946,7 +954,7 @@
     <div class="product-card reveal" style="transition-delay: 0.20s;">
       <div class="card-img tea">
         <div class="card-badge">🌿 Organic</div>
-        <img src="https://res.cloudinary.com/dsprn0ew4/image/upload/v1776981470/UTILIZANDO_ESTAS_VARIANTES_202604231556_zpfyy4.jpg" alt="K-Cup Tea Pod" class="card-product-img">
+        <img src="https://res.cloudinary.com/dsprn0ew4/image/upload/f_auto,q_auto,w_800/v1776981470/UTILIZANDO_ESTAS_VARIANTES_202604231556_zpfyy4.jpg" alt="K-Cup Tea Pod" class="card-product-img" loading="lazy" decoding="async">
       </div>
       <div class="card-body">
         <div class="card-tag">🌿 Tea</div>
@@ -963,7 +971,7 @@
     <div class="product-card reveal-right" style="transition-delay: 0.28s;">
       <div class="card-img lotion">
         <div class="card-badge">🌸 Limited</div>
-        <img src="https://res.cloudinary.com/dsprn0ew4/image/upload/v1776980382/UTILIZANDO_ESTAS_VARIANTES_202604231538_zylukz.jpg" alt="Aromatherapy Lotion" class="card-product-img">
+        <img src="https://res.cloudinary.com/dsprn0ew4/image/upload/f_auto,q_auto,w_800/v1776980382/UTILIZANDO_ESTAS_VARIANTES_202604231538_zylukz.jpg" alt="Aromatherapy Lotion" class="card-product-img" loading="lazy" decoding="async">
       </div>
       <div class="card-body">
         <div class="card-tag">🌸 Aromatherapy</div>
@@ -1106,10 +1114,10 @@
 
   // ── CART ──────────────────────────────────────────────────────────────
   const PRODUCTS = {
-    'Happy Day Hydration':      { price: 24.99, img: 'https://res.cloudinary.com/dsprn0ew4/image/upload/v1776981526/UTILIZANDO_ESTAS_VARIANTES_202604231558_jf2jbi.jpg' },
-    'Infused K-Cup Coffee Pod': { price: 18.99, img: 'https://res.cloudinary.com/dsprn0ew4/image/upload/v1776980383/GENERA_ESTA_IMAGEN_202604231538_y8u8m1.jpg' },
-    'K-Cup Tea Pod':            { price: 16.99, img: 'https://res.cloudinary.com/dsprn0ew4/image/upload/v1776981470/UTILIZANDO_ESTAS_VARIANTES_202604231556_zpfyy4.jpg' },
-    'Aromatherapy Lotion':      { price: 28.99, img: 'https://res.cloudinary.com/dsprn0ew4/image/upload/v1776980382/UTILIZANDO_ESTAS_VARIANTES_202604231538_zylukz.jpg' }
+    'Happy Day Hydration':      { price: 24.99, img: 'https://res.cloudinary.com/dsprn0ew4/image/upload/f_auto,q_auto,w_800/v1776981526/UTILIZANDO_ESTAS_VARIANTES_202604231558_jf2jbi.jpg' },
+    'Infused K-Cup Coffee Pod': { price: 18.99, img: 'https://res.cloudinary.com/dsprn0ew4/image/upload/f_auto,q_auto,w_800/v1776980383/GENERA_ESTA_IMAGEN_202604231538_y8u8m1.jpg' },
+    'K-Cup Tea Pod':            { price: 16.99, img: 'https://res.cloudinary.com/dsprn0ew4/image/upload/f_auto,q_auto,w_800/v1776981470/UTILIZANDO_ESTAS_VARIANTES_202604231556_zpfyy4.jpg' },
+    'Aromatherapy Lotion':      { price: 28.99, img: 'https://res.cloudinary.com/dsprn0ew4/image/upload/f_auto,q_auto,w_800/v1776980382/UTILIZANDO_ESTAS_VARIANTES_202604231538_zylukz.jpg' }
   };
   const cart = {};
   const cartBtn = document.querySelector('.nav-cart');
@@ -1187,7 +1195,7 @@
         <td style="padding:12px 8px;text-align:right;font-family:'Fredoka One',cursive;color:#2D1B3D;">$${sub.toFixed(2)}</td>
       </tr>`;
     }).join('');
-    const html = `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Happy Days — Checkout</title><link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Fredoka+One&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet"><style>*{margin:0;padding:0;box-sizing:border-box}body{background:#F3E8D2;font-family:'Nunito',sans-serif;min-height:100vh;display:flex;align-items:flex-start;justify-content:center;padding:24px 16px}.box{background:#FFFDF7;border:4px solid #2D1B3D;border-radius:20px;box-shadow:8px 8px 0 #2D1B3D;max-width:640px;width:100%;padding:28px}table{width:100%;border-collapse:collapse;margin-bottom:8px;overflow-x:auto;display:block}@media(max-width:480px){.box{padding:20px;border-radius:16px}th,td{font-size:.8rem;padding:8px 4px}}.logo{font-family:'Pacifico',cursive;font-size:2rem;color:#2D1B3D;text-shadow:3px 3px 0 #F2C94C;text-align:center;margin-bottom:4px}.sub{text-align:center;font-family:'Fredoka One',cursive;color:#6A4C93;font-size:.95rem;letter-spacing:1px;margin-bottom:32px}h2{font-family:'Pacifico',cursive;color:#2D1B3D;font-size:1.4rem;text-shadow:2px 2px 0 #F2C94C;margin-bottom:20px}table{width:100%;border-collapse:collapse;margin-bottom:8px}th{font-family:'Fredoka One',cursive;color:#2D1B3D;background:#F2C94C;padding:10px 8px;border:2px solid #2D1B3D;font-size:.85rem;letter-spacing:1px;text-transform:uppercase}td{border-bottom:2px solid rgba(45,27,61,.08);vertical-align:middle}.total-row{display:flex;justify-content:space-between;align-items:center;padding:20px 0;border-top:3px solid #2D1B3D;margin-top:12px}.tl{font-family:'Pacifico',cursive;font-size:1.3rem;color:#2D1B3D}.ta{font-family:'Pacifico',cursive;font-size:1.6rem;color:#5C7F3A}.btn{display:block;width:100%;margin-top:24px;font-family:'Fredoka One',cursive;font-size:1.15rem;color:#2D1B3D;background:#F2C94C;border:3px solid #2D1B3D;border-radius:50px;padding:17px;cursor:pointer;box-shadow:5px 5px 0 #2D1B3D;text-align:center;text-decoration:none;transition:all .15s}.btn:hover{background:#A8C34A;transform:translate(-2px,-2px);box-shadow:7px 7px 0 #2D1B3D}.note{text-align:center;margin-top:16px;font-size:.82rem;color:rgba(45,27,61,.45);font-family:'Fredoka One',cursive;letter-spacing:.5px}</style></head><body><div class="box"><img src="https://res.cloudinary.com/dsprn0ew4/image/upload/v1776983162/Happy_eqhp1j.png" alt="Happy Days" style="height:90px;width:auto;display:block;margin:0 auto 12px;"><p class="sub">Wellness Co. — Good Vibes Only ✿</p><h2>✿ Order Summary</h2><table><thead><tr><th></th><th>Product</th><th style="text-align:center">Qty</th><th style="text-align:right">Price</th><th style="text-align:right">Subtotal</th></tr></thead><tbody>${rows}</tbody></table><div class="total-row"><span class="tl">Total</span><span class="ta">$${total.toFixed(2)}</span></div><a href="#" class="btn" onclick="alert('✿ Payment gateway coming soon! Keep the good vibes! ☮');return false;">✦ Complete Purchase — $${total.toFixed(2)}</a><p class="note">☮ Free shipping on orders over $50 · 100% Natural · Cruelty Free ✿</p></div></body></html>`;
+    const html = `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Happy Days — Checkout</title><link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Fredoka+One&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet"><style>*{margin:0;padding:0;box-sizing:border-box}body{background:#F3E8D2;font-family:'Nunito',sans-serif;min-height:100vh;display:flex;align-items:flex-start;justify-content:center;padding:24px 16px}.box{background:#FFFDF7;border:4px solid #2D1B3D;border-radius:20px;box-shadow:8px 8px 0 #2D1B3D;max-width:640px;width:100%;padding:28px}table{width:100%;border-collapse:collapse;margin-bottom:8px;overflow-x:auto;display:block}@media(max-width:480px){.box{padding:20px;border-radius:16px}th,td{font-size:.8rem;padding:8px 4px}}.logo{font-family:'Pacifico',cursive;font-size:2rem;color:#2D1B3D;text-shadow:3px 3px 0 #F2C94C;text-align:center;margin-bottom:4px}.sub{text-align:center;font-family:'Fredoka One',cursive;color:#6A4C93;font-size:.95rem;letter-spacing:1px;margin-bottom:32px}h2{font-family:'Pacifico',cursive;color:#2D1B3D;font-size:1.4rem;text-shadow:2px 2px 0 #F2C94C;margin-bottom:20px}table{width:100%;border-collapse:collapse;margin-bottom:8px}th{font-family:'Fredoka One',cursive;color:#2D1B3D;background:#F2C94C;padding:10px 8px;border:2px solid #2D1B3D;font-size:.85rem;letter-spacing:1px;text-transform:uppercase}td{border-bottom:2px solid rgba(45,27,61,.08);vertical-align:middle}.total-row{display:flex;justify-content:space-between;align-items:center;padding:20px 0;border-top:3px solid #2D1B3D;margin-top:12px}.tl{font-family:'Pacifico',cursive;font-size:1.3rem;color:#2D1B3D}.ta{font-family:'Pacifico',cursive;font-size:1.6rem;color:#5C7F3A}.btn{display:block;width:100%;margin-top:24px;font-family:'Fredoka One',cursive;font-size:1.15rem;color:#2D1B3D;background:#F2C94C;border:3px solid #2D1B3D;border-radius:50px;padding:17px;cursor:pointer;box-shadow:5px 5px 0 #2D1B3D;text-align:center;text-decoration:none;transition:all .15s}.btn:hover{background:#A8C34A;transform:translate(-2px,-2px);box-shadow:7px 7px 0 #2D1B3D}.note{text-align:center;margin-top:16px;font-size:.82rem;color:rgba(45,27,61,.45);font-family:'Fredoka One',cursive;letter-spacing:.5px}</style></head><body><div class="box"><img src="https://res.cloudinary.com/dsprn0ew4/image/upload/f_auto,q_auto,w_1400/v1776983162/Happy_eqhp1j.png" alt="Happy Days" style="height:90px;width:auto;display:block;margin:0 auto 12px;"><p class="sub">Wellness Co. — Good Vibes Only ✿</p><h2>✿ Order Summary</h2><table><thead><tr><th></th><th>Product</th><th style="text-align:center">Qty</th><th style="text-align:right">Price</th><th style="text-align:right">Subtotal</th></tr></thead><tbody>${rows}</tbody></table><div class="total-row"><span class="tl">Total</span><span class="ta">$${total.toFixed(2)}</span></div><a href="#" class="btn" onclick="alert('✿ Payment gateway coming soon! Keep the good vibes! ☮');return false;">✦ Complete Purchase — $${total.toFixed(2)}</a><p class="note">☮ Free shipping on orders over $50 · 100% Natural · Cruelty Free ✿</p></div></body></html>`;
     window.open(URL.createObjectURL(new Blob([html],{type:'text/html'})), '_blank');
   });
 

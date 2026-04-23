@@ -383,6 +383,16 @@
     font-family: 'Fredoka One', cursive;
     font-size: 1.5rem;
     color: var(--dark-green);
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+  .card-price-unit {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.74rem;
+    font-weight: 700;
+    color: rgba(45,27,61,0.45);
+    letter-spacing: 0.2px;
   }
   .card-price span {
     font-size: 0.85rem;
@@ -925,9 +935,12 @@
       <div class="card-body">
         <div class="card-tag">✿ Hydration</div>
         <h3 class="card-name">Happy Day Hydration</h3>
-        <p class="card-desc">Infused with natural botanicals & good vibes. Keeps you glowing all day, every day.</p>
+        <p class="card-desc">Botanically infused & packed with good vibes. One packet, all-day glow. Mix it up and feel the difference.</p>
         <div class="card-footer">
-          <div class="card-price">$24.99 <span>$32.00</span></div>
+          <div class="card-price">
+            $1.99
+            <span class="card-price-unit">per packet · free shipping over $50</span>
+          </div>
           <button class="btn-add">+ Add to Cart</button>
         </div>
       </div>
@@ -942,9 +955,12 @@
       <div class="card-body">
         <div class="card-tag">☕ Coffee</div>
         <h3 class="card-name">Infused K-Cup Coffee Pod</h3>
-        <p class="card-desc">Start your morning with a groovy blend. Smooth, bold, and botanically infused for maximum vibes.</p>
+        <p class="card-desc">Start your morning groovy. Each box includes 4 botanically infused pods — smooth, bold & full of good vibes.</p>
         <div class="card-footer">
-          <div class="card-price">$18.99 <span>$26.00</span></div>
+          <div class="card-price">
+            $23.96
+            <span class="card-price-unit">4 pods per box · $5.99 each</span>
+          </div>
           <button class="btn-add">+ Add to Cart</button>
         </div>
       </div>
@@ -959,9 +975,12 @@
       <div class="card-body">
         <div class="card-tag">🌿 Tea</div>
         <h3 class="card-name">K-Cup Tea Pod</h3>
-        <p class="card-desc">Sip into serenity. Our botanically infused teas are crafted for calm minds and good trips.</p>
+        <p class="card-desc">Sip into serenity. Each box includes 4 botanically infused tea pods — crafted for calm minds and good trips.</p>
         <div class="card-footer">
-          <div class="card-price">$16.99 <span>$22.00</span></div>
+          <div class="card-price">
+            $23.96
+            <span class="card-price-unit">4 pods per box · $5.99 each</span>
+          </div>
           <button class="btn-add">+ Add to Cart</button>
         </div>
       </div>
@@ -1114,10 +1133,10 @@
 
   // ── CART ──────────────────────────────────────────────────────────────
   const PRODUCTS = {
-    'Happy Day Hydration':      { price: 24.99, img: 'https://res.cloudinary.com/dsprn0ew4/image/upload/f_auto,q_auto,w_800/v1776981526/UTILIZANDO_ESTAS_VARIANTES_202604231558_jf2jbi.jpg' },
-    'Infused K-Cup Coffee Pod': { price: 18.99, img: 'https://res.cloudinary.com/dsprn0ew4/image/upload/f_auto,q_auto,w_800/v1776980383/GENERA_ESTA_IMAGEN_202604231538_y8u8m1.jpg' },
-    'K-Cup Tea Pod':            { price: 16.99, img: 'https://res.cloudinary.com/dsprn0ew4/image/upload/f_auto,q_auto,w_800/v1776981470/UTILIZANDO_ESTAS_VARIANTES_202604231556_zpfyy4.jpg' },
-    'Aromatherapy Lotion':      { price: 28.99, img: 'https://res.cloudinary.com/dsprn0ew4/image/upload/f_auto,q_auto,w_800/v1776980382/UTILIZANDO_ESTAS_VARIANTES_202604231538_zylukz.jpg' }
+    'Happy Day Hydration':      { price: 1.99,  unit: 'per packet',          img: 'https://res.cloudinary.com/dsprn0ew4/image/upload/f_auto,q_auto,w_800/v1776981526/UTILIZANDO_ESTAS_VARIANTES_202604231558_jf2jbi.jpg' },
+    'Infused K-Cup Coffee Pod': { price: 23.96, unit: '4 pods · $5.99 each', img: 'https://res.cloudinary.com/dsprn0ew4/image/upload/f_auto,q_auto,w_800/v1776980383/GENERA_ESTA_IMAGEN_202604231538_y8u8m1.jpg' },
+    'K-Cup Tea Pod':            { price: 23.96, unit: '4 pods · $5.99 each', img: 'https://res.cloudinary.com/dsprn0ew4/image/upload/f_auto,q_auto,w_800/v1776981470/UTILIZANDO_ESTAS_VARIANTES_202604231556_zpfyy4.jpg' },
+    'Aromatherapy Lotion':      { price: 28.99, unit: '',                    img: 'https://res.cloudinary.com/dsprn0ew4/image/upload/f_auto,q_auto,w_800/v1776980382/UTILIZANDO_ESTAS_VARIANTES_202604231538_zylukz.jpg' }
   };
   const cart = {};
   const cartBtn = document.querySelector('.nav-cart');
@@ -1146,7 +1165,7 @@
         <img src="${p.img}" alt="${name}" class="cart-item-img">
         <div class="cart-item-info">
           <div class="cart-item-name">${name}</div>
-          <div class="cart-item-price">$${p.price.toFixed(2)} × ${cart[name]} = $${sub.toFixed(2)}</div>
+          <div class="cart-item-price">$${p.price.toFixed(2)}${p.unit ? ' <span style="font-size:.78rem;opacity:.55">('+p.unit+')</span>' : ''} × ${cart[name]} = $${sub.toFixed(2)}</div>
         </div>
         <div class="cart-item-qty">
           <button class="qty-btn" onclick="changeQty('${name}',-1)">−</button>
@@ -1189,7 +1208,7 @@
       const p = PRODUCTS[name]; const sub = p.price * cart[name]; total += sub;
       return `<tr>
         <td style="padding:12px 8px;"><img src="${p.img}" style="width:56px;height:56px;border-radius:10px;border:2px solid #2D1B3D;object-fit:cover;" alt="${name}"></td>
-        <td style="padding:12px 8px;font-family:'Fredoka One',cursive;color:#2D1B3D;font-size:1rem;">${name}</td>
+        <td style="padding:12px 8px;font-family:'Fredoka One',cursive;color:#2D1B3D;font-size:1rem;">${name}${p.unit?`<br><span style="font-size:.72rem;color:rgba(45,27,61,.45);font-family:'Nunito',sans-serif;font-weight:700;">${p.unit}</span>`:''}</td>
         <td style="padding:12px 8px;text-align:center;font-family:'Fredoka One',cursive;color:#6A4C93;">${cart[name]}</td>
         <td style="padding:12px 8px;text-align:right;font-family:'Fredoka One',cursive;color:#5C7F3A;">$${p.price.toFixed(2)}</td>
         <td style="padding:12px 8px;text-align:right;font-family:'Fredoka One',cursive;color:#2D1B3D;">$${sub.toFixed(2)}</td>

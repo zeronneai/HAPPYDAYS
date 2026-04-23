@@ -64,13 +64,15 @@
     border-bottom: 4px solid var(--yellow);
   }
   .nav-logo {
-    font-family: 'Pacifico', cursive;
-    font-size: 1.6rem;
-    color: var(--yellow);
-    text-shadow: 2px 2px 0 var(--orange);
-    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
   }
-  .nav-logo span { color: var(--pink); }
+  .nav-logo-img {
+    height: 46px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+  }
   .nav-links { display: flex; gap: 32px; list-style: none; }
   .nav-links a {
     font-family: 'Fredoka One', cursive;
@@ -637,7 +639,9 @@
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">Happy<span>Days</span> ®</div>
+  <div class="nav-logo">
+    <img src="https://res.cloudinary.com/dsprn0ew4/image/upload/v1776922296/ChatGPT_Image_Apr_22_2026_11_31_30_PM_vk1zdb.png" alt="Happy Days Wellness Co." class="nav-logo-img">
+  </div>
   <ul class="nav-links">
     <li><a href="#products">Shop</a></li>
     <li><a href="#vibes">Our Vibe</a></li>

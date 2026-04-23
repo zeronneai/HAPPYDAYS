@@ -1019,6 +1019,15 @@
 </footer>
 
 <script>
+  // Hero video — cámara lenta para que el loop sea imperceptible
+  const heroVideo = document.querySelector('.hero-video-bg');
+  if (heroVideo) {
+    const setSlowMo = () => { heroVideo.playbackRate = 0.4; };
+    heroVideo.addEventListener('loadedmetadata', setSlowMo);
+    heroVideo.addEventListener('play', setSlowMo);
+    setSlowMo();
+  }
+
   // Custom cursor
   const cursor = document.getElementById('cursor');
   document.addEventListener('mousemove', e => {

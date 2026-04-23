@@ -106,12 +106,31 @@
     padding: 120px 40px 80px;
     position: relative; overflow: hidden;
     text-align: center;
-    background-image:
-      linear-gradient(170deg, rgba(243,232,210,0.88) 0%, rgba(243,232,210,0.76) 55%, rgba(45,27,61,0.14) 100%),
-      url('https://res.cloudinary.com/dsprn0ew4/image/upload/v1776922197/CREA_UN_BACKGROUND_202604222329_zbhcxp.jpg');
+    background-image: url('https://res.cloudinary.com/dsprn0ew4/image/upload/v1776922197/CREA_UN_BACKGROUND_202604222329_zbhcxp.jpg');
     background-size: cover;
     background-position: center;
-    background-attachment: scroll, fixed;
+  }
+
+  /* HERO VIDEO BG */
+  .hero-video-bg {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .hero-video-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      170deg,
+      rgba(243,232,210,0.80) 0%,
+      rgba(243,232,210,0.64) 55%,
+      rgba(45,27,61,0.22) 100%
+    );
+    z-index: 1;
+    pointer-events: none;
   }
   .hero-blob {
     position: absolute;
@@ -653,7 +672,8 @@
   @media (max-width: 768px) {
     nav { padding: 12px 20px; }
     .nav-links { display: none; }
-    .hero { padding: 100px 20px 60px; background-attachment: scroll, scroll; }
+    .hero { padding: 100px 20px 60px; }
+    .hero-video-bg { display: none; } /* en mobile usa solo el bg image fallback */
     .vibes { background-attachment: scroll, scroll; }
     .products { padding: 60px 20px; }
     .footer-inner { grid-template-columns: 1fr 1fr; }
@@ -690,6 +710,13 @@
 
 <!-- HERO -->
 <section class="hero">
+  <!-- VIDEO BACKGROUND optimizado: WebM primero (30-50% más liviano), MP4 como fallback -->
+  <video class="hero-video-bg" autoplay loop muted playsinline preload="auto">
+    <source src="https://res.cloudinary.com/dsprn0ew4/video/upload/q_auto,w_1280,vc_auto/v1776924253/hf_20260423_060214_9f68c7d8-58dd-42cf-b2c8-0e6774d7b203_ny7gbr.webm" type="video/webm">
+    <source src="https://res.cloudinary.com/dsprn0ew4/video/upload/q_auto,w_1280,vc_auto/v1776924253/hf_20260423_060214_9f68c7d8-58dd-42cf-b2c8-0e6774d7b203_ny7gbr.mp4" type="video/mp4">
+  </video>
+  <div class="hero-video-overlay"></div>
+
   <div class="hero-blob blob1"></div>
   <div class="hero-blob blob2"></div>
   <div class="hero-blob blob3"></div>

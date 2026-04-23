@@ -106,7 +106,7 @@
     padding: 120px 40px 80px;
     position: relative; overflow: hidden;
     text-align: center;
-    background-image: url('https://res.cloudinary.com/dsprn0ew4/image/upload/v1776922197/CREA_UN_BACKGROUND_202604222329_zbhcxp.jpg');
+    background-image: url('https://res.cloudinary.com/dsprn0ew4/image/upload/v1776980123/ELIMINA_EL_TEXTO_202604231451_rhcpgc.jpg');
     background-size: cover;
     background-position: center;
   }
@@ -315,38 +315,21 @@
     display: flex; align-items: center; justify-content: center;
     position: relative; overflow: hidden;
   }
-  /* Product 1 - Hydration */
-  .card-img.hydration {
-    background-image:
-      linear-gradient(135deg, rgba(168,195,74,0.72) 0%, rgba(92,127,58,0.80) 100%),
-      url('https://res.cloudinary.com/dsprn0ew4/image/upload/v1776922197/CREA_UN_BACKGROUND_202604222329_zbhcxp.jpg');
-    background-size: cover;
-    background-position: center 0%;
+  /* Product card real photos */
+  .card-img.hydration { background: var(--lime); }
+  .card-img.coffee    { background: var(--navy); }
+  .card-img.tea       { background: var(--pink); }
+  .card-img.lotion    { background: var(--orange); }
+
+  .card-product-img {
+    position: absolute;
+    inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
   }
-  /* Product 2 - Coffee Pod */
-  .card-img.coffee {
-    background-image:
-      linear-gradient(135deg, rgba(45,27,61,0.80) 0%, rgba(106,76,147,0.70) 100%),
-      url('https://res.cloudinary.com/dsprn0ew4/image/upload/v1776922197/CREA_UN_BACKGROUND_202604222329_zbhcxp.jpg');
-    background-size: cover;
-    background-position: center 33%;
-  }
-  /* Product 3 - Tea Pod */
-  .card-img.tea {
-    background-image:
-      linear-gradient(135deg, rgba(236,90,140,0.74) 0%, rgba(242,201,76,0.65) 100%),
-      url('https://res.cloudinary.com/dsprn0ew4/image/upload/v1776922197/CREA_UN_BACKGROUND_202604222329_zbhcxp.jpg');
-    background-size: cover;
-    background-position: center 66%;
-  }
-  /* Product 4 - Lotion */
-  .card-img.lotion {
-    background-image:
-      linear-gradient(135deg, rgba(242,125,45,0.74) 0%, rgba(236,90,140,0.65) 100%),
-      url('https://res.cloudinary.com/dsprn0ew4/image/upload/v1776922197/CREA_UN_BACKGROUND_202604222329_zbhcxp.jpg');
-    background-size: cover;
-    background-position: center 100%;
-  }
+  .product-card:hover .card-product-img { transform: scale(1.06); }
+  .card-badge { z-index: 1; }
 
   /* SVG Mockup inside card */
   .mockup-svg { width: 75%; max-width: 200px; drop-shadow: 0 8px 24px rgba(0,0,0,0.3); }
@@ -668,6 +651,111 @@
   }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
+  /* CART MODAL */
+  .cart-overlay {
+    position: fixed; inset: 0;
+    background: rgba(45,27,61,0.65);
+    backdrop-filter: blur(6px);
+    z-index: 500;
+    display: none; align-items: center; justify-content: center;
+    padding: 20px;
+  }
+  .cart-overlay.open { display: flex; animation: fadeIn 0.2s ease; }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+  .cart-modal {
+    background: var(--white);
+    border: 4px solid var(--navy);
+    border-radius: 24px;
+    box-shadow: 10px 10px 0 var(--navy);
+    width: 100%; max-width: 500px;
+    max-height: 85vh;
+    display: flex; flex-direction: column;
+    animation: slideUp 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .cart-modal-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 24px 28px 18px;
+    border-bottom: 3px solid var(--navy);
+    flex-shrink: 0;
+  }
+  .cart-modal-header h3 {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.5rem;
+    color: var(--navy);
+    text-shadow: 2px 2px 0 var(--yellow);
+  }
+  .cart-close {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.1rem;
+    color: var(--navy); background: var(--yellow);
+    border: 3px solid var(--navy); border-radius: 50%;
+    width: 38px; height: 38px; cursor: pointer;
+    box-shadow: 2px 2px 0 var(--navy);
+    transition: all 0.15s;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .cart-close:hover { background: var(--pink); color: var(--white); transform: rotate(90deg); }
+
+  .cart-items { padding: 4px 28px; overflow-y: auto; flex: 1; }
+  .cart-empty {
+    text-align: center; padding: 48px 0;
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.05rem; color: rgba(45,27,61,0.35); letter-spacing: 1px;
+  }
+  .cart-item {
+    display: flex; align-items: center; gap: 14px;
+    padding: 14px 0; border-bottom: 2px solid rgba(45,27,61,0.08);
+  }
+  .cart-item-img {
+    width: 64px; height: 64px;
+    border-radius: 12px; border: 2px solid var(--navy);
+    object-fit: cover; flex-shrink: 0;
+  }
+  .cart-item-info { flex: 1; min-width: 0; }
+  .cart-item-name {
+    font-family: 'Fredoka One', cursive;
+    font-size: 0.95rem; color: var(--navy);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .cart-item-price {
+    font-family: 'Nunito', sans-serif; font-weight: 700;
+    font-size: 0.85rem; color: var(--dark-green); margin-top: 2px;
+  }
+  .cart-item-qty { display: flex; align-items: center; gap: 8px; }
+  .qty-btn {
+    width: 28px; height: 28px;
+    background: var(--cream); border: 2px solid var(--navy); border-radius: 50%;
+    font-family: 'Fredoka One', cursive; font-size: 1rem; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.15s; line-height: 1;
+  }
+  .qty-btn:hover { background: var(--yellow); transform: scale(1.1); }
+  .qty-num {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1rem; color: var(--navy); min-width: 20px; text-align: center;
+  }
+  .cart-modal-footer {
+    padding: 18px 28px 24px;
+    border-top: 3px solid var(--navy); flex-shrink: 0;
+  }
+  .cart-total {
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: 'Pacifico', cursive; font-size: 1.3rem;
+    color: var(--navy); margin-bottom: 16px;
+  }
+  .cart-total-amount { color: var(--dark-green); }
+  .btn-checkout {
+    width: 100%;
+    font-family: 'Fredoka One', cursive; font-size: 1.15rem;
+    color: var(--navy); background: var(--yellow);
+    border: 3px solid var(--navy); border-radius: 50px;
+    padding: 15px; cursor: pointer;
+    box-shadow: 5px 5px 0 var(--navy); transition: all 0.15s;
+    letter-spacing: 0.5px;
+  }
+  .btn-checkout:hover { transform: translate(-2px,-2px); box-shadow: 7px 7px 0 var(--navy); background: var(--lime); }
+
   /* RESPONSIVE */
   @media (max-width: 768px) {
     nav { padding: 12px 20px; }
@@ -768,32 +856,7 @@
     <div class="product-card reveal" style="transition-delay: 0.05s;">
       <div class="card-img hydration">
         <div class="card-badge">⭐ Best Seller</div>
-        <svg class="mockup-svg" viewBox="0 0 120 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter: drop-shadow(0 8px 20px rgba(0,0,0,0.35));">
-          <!-- Bottle body -->
-          <rect x="30" y="40" width="60" height="140" rx="18" fill="#F3E8D2"/>
-          <rect x="30" y="40" width="60" height="140" rx="18" fill="url(#grad1)" opacity="0.9"/>
-          <!-- Bottle neck -->
-          <rect x="42" y="20" width="36" height="28" rx="8" fill="#F2C94C"/>
-          <!-- Cap -->
-          <rect x="40" y="10" width="40" height="18" rx="8" fill="#5C7F3A"/>
-          <!-- Label area -->
-          <rect x="36" y="80" width="48" height="70" rx="8" fill="white" opacity="0.85"/>
-          <!-- Label text -->
-          <text x="60" y="105" text-anchor="middle" font-family="serif" font-size="7" font-weight="bold" fill="#2D1B3D">Happy Days</text>
-          <text x="60" y="116" text-anchor="middle" font-family="serif" font-size="5" fill="#5C7F3A">WELLNESS CO.</text>
-          <!-- Flower deco -->
-          <text x="60" y="135" text-anchor="middle" font-size="14" fill="#EC5A8C">✿</text>
-          <text x="45" y="143" text-anchor="middle" font-size="9" fill="#F27D2D">☮</text>
-          <text x="75" y="143" text-anchor="middle" font-size="9" fill="#6A4C93">✦</text>
-          <!-- Shine -->
-          <rect x="36" y="55" width="8" height="50" rx="4" fill="white" opacity="0.3"/>
-          <defs>
-            <linearGradient id="grad1" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#A8C34A"/>
-              <stop offset="100%" stop-color="#5C7F3A"/>
-            </linearGradient>
-          </defs>
-        </svg>
+        <img src="https://res.cloudinary.com/dsprn0ew4/image/upload/v1776981526/UTILIZANDO_ESTAS_VARIANTES_202604231558_jf2jbi.jpg" alt="Happy Day Hydration" class="card-product-img">
       </div>
       <div class="card-body">
         <div class="card-tag">✿ Hydration</div>
@@ -810,31 +873,7 @@
     <div class="product-card reveal" style="transition-delay: 0.15s;">
       <div class="card-img coffee">
         <div class="card-badge">☕ New</div>
-        <svg class="mockup-svg" viewBox="0 0 140 160" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter: drop-shadow(0 8px 20px rgba(0,0,0,0.45));">
-          <!-- K-Cup body -->
-          <path d="M25 50 Q25 30 70 30 Q115 30 115 50 L110 130 Q110 145 70 145 Q30 145 30 130 Z" fill="#2D1B3D"/>
-          <path d="M25 50 Q25 30 70 30 Q115 30 115 50 L110 130 Q110 145 70 145 Q30 145 30 130 Z" fill="url(#coffeeGrad)" opacity="0.8"/>
-          <!-- Top lid rim -->
-          <ellipse cx="70" cy="50" rx="45" ry="12" fill="#6A4C93"/>
-          <!-- Foil top -->
-          <ellipse cx="70" cy="47" rx="38" ry="9" fill="#F2C94C"/>
-          <!-- Puncture circle -->
-          <ellipse cx="70" cy="47" rx="12" ry="4" fill="#2D1B3D" opacity="0.4"/>
-          <!-- Label -->
-          <path d="M32 75 Q32 65 70 65 Q108 65 108 75 L106 120 Q106 128 70 128 Q34 128 34 120 Z" fill="white" opacity="0.15"/>
-          <!-- Logo text -->
-          <text x="70" y="92" text-anchor="middle" font-family="serif" font-size="8" font-weight="bold" fill="#F2C94C">Happy Days</text>
-          <text x="70" y="103" text-anchor="middle" font-family="serif" font-size="5.5" fill="#EC5A8C">INFUSED COFFEE</text>
-          <text x="70" y="116" text-anchor="middle" font-size="12" fill="#F2C94C">☕ ✿ ☮</text>
-          <!-- Shine -->
-          <path d="M32 55 Q33 50 40 48 L40 120 Q33 118 32 113 Z" fill="white" opacity="0.1"/>
-          <defs>
-            <linearGradient id="coffeeGrad" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#6A4C93"/>
-              <stop offset="100%" stop-color="#F27D2D"/>
-            </linearGradient>
-          </defs>
-        </svg>
+        <img src="https://res.cloudinary.com/dsprn0ew4/image/upload/v1776980383/GENERA_ESTA_IMAGEN_202604231538_y8u8m1.jpg" alt="Infused K-Cup Coffee Pod" class="card-product-img">
       </div>
       <div class="card-body">
         <div class="card-tag">☕ Coffee</div>
@@ -851,29 +890,7 @@
     <div class="product-card reveal" style="transition-delay: 0.25s;">
       <div class="card-img tea">
         <div class="card-badge">🌿 Organic</div>
-        <svg class="mockup-svg" viewBox="0 0 140 160" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter: drop-shadow(0 8px 20px rgba(0,0,0,0.35));">
-          <!-- K-Cup body -->
-          <path d="M25 50 Q25 30 70 30 Q115 30 115 50 L110 130 Q110 145 70 145 Q30 145 30 130 Z" fill="#EC5A8C"/>
-          <path d="M25 50 Q25 30 70 30 Q115 30 115 50 L110 130 Q110 145 70 145 Q30 145 30 130 Z" fill="url(#teaGrad)" opacity="0.85"/>
-          <!-- Top lid rim -->
-          <ellipse cx="70" cy="50" rx="45" ry="12" fill="#A8C34A"/>
-          <!-- Foil top -->
-          <ellipse cx="70" cy="47" rx="38" ry="9" fill="#F3E8D2"/>
-          <!-- Puncture circle -->
-          <ellipse cx="70" cy="47" rx="12" ry="4" fill="#5C7F3A" opacity="0.5"/>
-          <!-- Label -->
-          <path d="M32 75 Q32 65 70 65 Q108 65 108 75 L106 120 Q106 128 70 128 Q34 128 34 120 Z" fill="white" opacity="0.2"/>
-          <text x="70" y="92" text-anchor="middle" font-family="serif" font-size="8" font-weight="bold" fill="#2D1B3D">Happy Days</text>
-          <text x="70" y="103" text-anchor="middle" font-family="serif" font-size="5.5" fill="#2D1B3D">INFUSED TEA</text>
-          <text x="70" y="116" text-anchor="middle" font-size="12" fill="#2D1B3D">🌿 ✿ ☯</text>
-          <path d="M32 55 Q33 50 40 48 L40 120 Q33 118 32 113 Z" fill="white" opacity="0.15"/>
-          <defs>
-            <linearGradient id="teaGrad" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#F2C94C"/>
-              <stop offset="100%" stop-color="#A8C34A"/>
-            </linearGradient>
-          </defs>
-        </svg>
+        <img src="https://res.cloudinary.com/dsprn0ew4/image/upload/v1776981470/UTILIZANDO_ESTAS_VARIANTES_202604231556_zpfyy4.jpg" alt="K-Cup Tea Pod" class="card-product-img">
       </div>
       <div class="card-body">
         <div class="card-tag">🌿 Tea</div>
@@ -890,30 +907,7 @@
     <div class="product-card reveal" style="transition-delay: 0.35s;">
       <div class="card-img lotion">
         <div class="card-badge">🌸 Limited</div>
-        <svg class="mockup-svg" viewBox="0 0 110 210" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter: drop-shadow(0 8px 20px rgba(0,0,0,0.4));">
-          <!-- Tube body -->
-          <rect x="20" y="55" width="70" height="130" rx="12" fill="#F27D2D"/>
-          <rect x="20" y="55" width="70" height="130" rx="12" fill="url(#lotionGrad)" opacity="0.9"/>
-          <!-- Cap -->
-          <rect x="30" y="25" width="50" height="36" rx="10" fill="#6A4C93"/>
-          <rect x="35" y="18" width="40" height="16" rx="6" fill="#2D1B3D"/>
-          <!-- Crimped bottom -->
-          <rect x="20" y="168" width="70" height="20" rx="4" fill="#2D1B3D" opacity="0.25"/>
-          <!-- Label -->
-          <rect x="26" y="80" width="58" height="90" rx="6" fill="white" opacity="0.15"/>
-          <text x="55" y="108" text-anchor="middle" font-family="serif" font-size="7" font-weight="bold" fill="#F3E8D2">Happy Days</text>
-          <text x="55" y="120" text-anchor="middle" font-family="serif" font-size="5" fill="#F3E8D2">WELLNESS CO.</text>
-          <text x="55" y="135" text-anchor="middle" font-size="11" fill="#F3E8D2">✿ ☮ ✦</text>
-          <text x="55" y="150" text-anchor="middle" font-family="sans-serif" font-size="5" fill="#F3E8D2">AROMATHERAPY LOTION</text>
-          <!-- Shine -->
-          <rect x="25" y="62" width="8" height="90" rx="4" fill="white" opacity="0.2"/>
-          <defs>
-            <linearGradient id="lotionGrad" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#EC5A8C"/>
-              <stop offset="100%" stop-color="#6A4C93"/>
-            </linearGradient>
-          </defs>
-        </svg>
+        <img src="https://res.cloudinary.com/dsprn0ew4/image/upload/v1776980382/UTILIZANDO_ESTAS_VARIANTES_202604231538_zylukz.jpg" alt="Aromatherapy Lotion" class="card-product-img">
       </div>
       <div class="card-body">
         <div class="card-tag">🌸 Aromatherapy</div>
@@ -976,6 +970,24 @@
     <button class="btn-subscribe">Join the Tribe!</button>
   </div>
 </section>
+
+<!-- CART MODAL -->
+<div class="cart-overlay" id="cartOverlay">
+  <div class="cart-modal">
+    <div class="cart-modal-header">
+      <h3>🛒 Your Cart</h3>
+      <button class="cart-close" id="cartClose">✕</button>
+    </div>
+    <div class="cart-items" id="cartItemsList"></div>
+    <div class="cart-modal-footer">
+      <div class="cart-total">
+        <span>Total</span>
+        <span class="cart-total-amount" id="cartTotal">$0.00</span>
+      </div>
+      <button class="btn-checkout" id="btnCheckout">✦ Checkout</button>
+    </div>
+  </div>
+</div>
 
 <!-- FOOTER -->
 <footer>
@@ -1046,22 +1058,91 @@
   }, { threshold: 0.12 });
   reveals.forEach(r => observer.observe(r));
 
-  // Cart counter (UI only for now)
-  let count = 0;
+  // ── CART ──────────────────────────────────────────────────────────────
+  const PRODUCTS = {
+    'Happy Day Hydration':      { price: 24.99, img: 'https://res.cloudinary.com/dsprn0ew4/image/upload/v1776981526/UTILIZANDO_ESTAS_VARIANTES_202604231558_jf2jbi.jpg' },
+    'Infused K-Cup Coffee Pod': { price: 18.99, img: 'https://res.cloudinary.com/dsprn0ew4/image/upload/v1776980383/GENERA_ESTA_IMAGEN_202604231538_y8u8m1.jpg' },
+    'K-Cup Tea Pod':            { price: 16.99, img: 'https://res.cloudinary.com/dsprn0ew4/image/upload/v1776981470/UTILIZANDO_ESTAS_VARIANTES_202604231556_zpfyy4.jpg' },
+    'Aromatherapy Lotion':      { price: 28.99, img: 'https://res.cloudinary.com/dsprn0ew4/image/upload/v1776980382/UTILIZANDO_ESTAS_VARIANTES_202604231538_zylukz.jpg' }
+  };
+  const cart = {};
   const cartBtn = document.querySelector('.nav-cart');
+  const cartOverlay = document.getElementById('cartOverlay');
+  const cartItemsList = document.getElementById('cartItemsList');
+  const cartTotalEl  = document.getElementById('cartTotal');
+
+  function updateCartCount() {
+    const n = Object.values(cart).reduce((a,b) => a+b, 0);
+    cartBtn.textContent = `🛒 Cart (${n})`;
+  }
+
+  function renderCart() {
+    const keys = Object.keys(cart).filter(k => cart[k] > 0);
+    if (!keys.length) {
+      cartItemsList.innerHTML = '<div class="cart-empty">✿ Your cart is empty ✿</div>';
+      cartTotalEl.textContent = '$0.00';
+      return;
+    }
+    let total = 0;
+    cartItemsList.innerHTML = keys.map(name => {
+      const p = PRODUCTS[name];
+      const sub = p.price * cart[name];
+      total += sub;
+      return `<div class="cart-item">
+        <img src="${p.img}" alt="${name}" class="cart-item-img">
+        <div class="cart-item-info">
+          <div class="cart-item-name">${name}</div>
+          <div class="cart-item-price">$${p.price.toFixed(2)} × ${cart[name]} = $${sub.toFixed(2)}</div>
+        </div>
+        <div class="cart-item-qty">
+          <button class="qty-btn" onclick="changeQty('${name}',-1)">−</button>
+          <span class="qty-num">${cart[name]}</span>
+          <button class="qty-btn" onclick="changeQty('${name}',1)">+</button>
+        </div>
+      </div>`;
+    }).join('');
+    cartTotalEl.textContent = `$${total.toFixed(2)}`;
+  }
+
+  window.changeQty = function(name, delta) {
+    cart[name] = Math.max(0, (cart[name] || 0) + delta);
+    if (cart[name] === 0) delete cart[name];
+    updateCartCount();
+    renderCart();
+  };
+
+  cartBtn.addEventListener('click', () => { renderCart(); cartOverlay.classList.add('open'); });
+  document.getElementById('cartClose').addEventListener('click', () => cartOverlay.classList.remove('open'));
+  cartOverlay.addEventListener('click', e => { if (e.target === cartOverlay) cartOverlay.classList.remove('open'); });
+
   document.querySelectorAll('.btn-add').forEach(btn => {
+    const name = btn.closest('.product-card').querySelector('.card-name').textContent.trim();
     btn.addEventListener('click', function() {
-      count++;
-      cartBtn.textContent = `🛒 Cart (${count})`;
+      cart[name] = (cart[name] || 0) + 1;
+      updateCartCount();
       this.textContent = '✓ Added!';
       this.style.background = '#5C7F3A';
       this.style.color = '#fff';
-      setTimeout(() => {
-        this.textContent = '+ Add to Cart';
-        this.style.background = '';
-        this.style.color = '';
-      }, 1400);
+      setTimeout(() => { this.textContent = '+ Add to Cart'; this.style.background = ''; this.style.color = ''; }, 1400);
     });
+  });
+
+  document.getElementById('btnCheckout').addEventListener('click', () => {
+    const keys = Object.keys(cart).filter(k => cart[k] > 0);
+    if (!keys.length) return;
+    let total = 0;
+    const rows = keys.map(name => {
+      const p = PRODUCTS[name]; const sub = p.price * cart[name]; total += sub;
+      return `<tr>
+        <td style="padding:12px 8px;"><img src="${p.img}" style="width:56px;height:56px;border-radius:10px;border:2px solid #2D1B3D;object-fit:cover;" alt="${name}"></td>
+        <td style="padding:12px 8px;font-family:'Fredoka One',cursive;color:#2D1B3D;font-size:1rem;">${name}</td>
+        <td style="padding:12px 8px;text-align:center;font-family:'Fredoka One',cursive;color:#6A4C93;">${cart[name]}</td>
+        <td style="padding:12px 8px;text-align:right;font-family:'Fredoka One',cursive;color:#5C7F3A;">$${p.price.toFixed(2)}</td>
+        <td style="padding:12px 8px;text-align:right;font-family:'Fredoka One',cursive;color:#2D1B3D;">$${sub.toFixed(2)}</td>
+      </tr>`;
+    }).join('');
+    const html = `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Happy Days — Checkout</title><link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Fredoka+One&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet"><style>*{margin:0;padding:0;box-sizing:border-box}body{background:#F3E8D2;font-family:'Nunito',sans-serif;min-height:100vh;display:flex;align-items:flex-start;justify-content:center;padding:40px 20px}.box{background:#FFFDF7;border:4px solid #2D1B3D;border-radius:24px;box-shadow:10px 10px 0 #2D1B3D;max-width:640px;width:100%;padding:40px}.logo{font-family:'Pacifico',cursive;font-size:2rem;color:#2D1B3D;text-shadow:3px 3px 0 #F2C94C;text-align:center;margin-bottom:4px}.sub{text-align:center;font-family:'Fredoka One',cursive;color:#6A4C93;font-size:.95rem;letter-spacing:1px;margin-bottom:32px}h2{font-family:'Pacifico',cursive;color:#2D1B3D;font-size:1.4rem;text-shadow:2px 2px 0 #F2C94C;margin-bottom:20px}table{width:100%;border-collapse:collapse;margin-bottom:8px}th{font-family:'Fredoka One',cursive;color:#2D1B3D;background:#F2C94C;padding:10px 8px;border:2px solid #2D1B3D;font-size:.85rem;letter-spacing:1px;text-transform:uppercase}td{border-bottom:2px solid rgba(45,27,61,.08);vertical-align:middle}.total-row{display:flex;justify-content:space-between;align-items:center;padding:20px 0;border-top:3px solid #2D1B3D;margin-top:12px}.tl{font-family:'Pacifico',cursive;font-size:1.3rem;color:#2D1B3D}.ta{font-family:'Pacifico',cursive;font-size:1.6rem;color:#5C7F3A}.btn{display:block;width:100%;margin-top:24px;font-family:'Fredoka One',cursive;font-size:1.15rem;color:#2D1B3D;background:#F2C94C;border:3px solid #2D1B3D;border-radius:50px;padding:17px;cursor:pointer;box-shadow:5px 5px 0 #2D1B3D;text-align:center;text-decoration:none;transition:all .15s}.btn:hover{background:#A8C34A;transform:translate(-2px,-2px);box-shadow:7px 7px 0 #2D1B3D}.note{text-align:center;margin-top:16px;font-size:.82rem;color:rgba(45,27,61,.45);font-family:'Fredoka One',cursive;letter-spacing:.5px}</style></head><body><div class="box"><div class="logo">Happy Days ®</div><p class="sub">Wellness Co. — Good Vibes Only ✿</p><h2>✿ Order Summary</h2><table><thead><tr><th></th><th>Product</th><th style="text-align:center">Qty</th><th style="text-align:right">Price</th><th style="text-align:right">Subtotal</th></tr></thead><tbody>${rows}</tbody></table><div class="total-row"><span class="tl">Total</span><span class="ta">$${total.toFixed(2)}</span></div><a href="#" class="btn" onclick="alert('✿ Payment gateway coming soon! Keep the good vibes! ☮');return false;">✦ Complete Purchase — $${total.toFixed(2)}</a><p class="note">☮ Free shipping on orders over $50 · 100% Natural · Cruelty Free ✿</p></div></body></html>`;
+    window.open(URL.createObjectURL(new Blob([html],{type:'text/html'})), '_blank');
   });
 
   // Newsletter form

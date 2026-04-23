@@ -151,16 +151,14 @@
     100% { opacity: 1; transform: scale(1) rotate(0deg); }
   }
 
-  .hero-title {
-    font-family: 'Pacifico', cursive;
-    font-size: clamp(3.5rem, 10vw, 8rem);
-    line-height: 1;
-    color: var(--navy);
+  .hero-logo {
+    width: clamp(240px, 48vw, 460px);
+    height: auto;
+    display: block;
     position: relative; z-index: 1;
     animation: slideUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
-    text-shadow: 5px 5px 0 var(--yellow), 8px 8px 0 var(--orange);
+    filter: drop-shadow(6px 6px 0 rgba(242,201,76,0.75)) drop-shadow(11px 11px 0 rgba(242,125,45,0.35));
   }
-  .hero-title .line2 { color: var(--purple); text-shadow: 5px 5px 0 var(--pink), 8px 8px 0 var(--navy); }
 
   .hero-sub {
     font-family: 'Fredoka One', cursive;
@@ -697,10 +695,11 @@
   <div class="hero-blob blob3"></div>
 
   <div class="hero-badge">Good Vibes Only · Est. 2026</div>
-  <h1 class="hero-title">
-    Happy<br>
-    <span class="line2">Days</span>
-  </h1>
+  <img
+    src="https://res.cloudinary.com/dsprn0ew4/image/upload/v1776922296/ChatGPT_Image_Apr_22_2026_11_31_30_PM_vk1zdb.png"
+    alt="Happy Days Wellness Co."
+    class="hero-logo"
+  >
   <p class="hero-sub">Wellness Co. — Feel the Groove. Live the Vibe.</p>
   <div class="hero-cta">
     <a href="#products" class="btn-primary">✦ Shop Now</a>
